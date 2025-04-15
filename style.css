@@ -1,0 +1,76 @@
+/* Style guide: Formula of Love album 
+Palette:
+#a3b6d1
+#1a2731
+#617284
+#446578
+#6c8ca6
+#586057
+#ced5eb
+#89898f
+#d8e5f8
+#34548c
+
+*/
+
+body { 
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1a2731;
+    background-color: #a3b6d1;
+}
+
+.title-container {
+    display: flex;
+    justify-content: center;
+    color: #1a2731;
+}
+
+.button-container {
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.button-1 {
+  background-color: #d8e5f8;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #1a2731;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  width: fit-content;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin-left: auto;
+  margin-right: auto;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-1:hover,
+.button-1:focus {
+  background-color: #6c8ca6;
+}
