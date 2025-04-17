@@ -32,13 +32,14 @@ body {
     color: #1a2731;
 }
 
-.button-container {
+.calculator-button-container {
     margin-right: auto;
     margin-left: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 20px;
+    display: grid;
+    grid-template-areas: "button1 button2 button3"
+                         "button4 button5 button6"
+                         "button7 button8 button9";
+    grid-gap: 5px;
 }
 
 .button-1 {
