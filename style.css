@@ -32,17 +32,38 @@ body {
     color: #1a2731;
 }
 
+.all-container {
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  row-gap: 10px;
+}
+
+#display {
+  width: 415px;
+  height: 100px;
+  font-size: 30px;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+}
+
 .calculator-button-container {
     margin-right: auto;
     margin-left: auto;
     display: grid;
-    grid-template-areas: "button1 button2 button3"
-                         "button4 button5 button6"
-                         "button7 button8 button9";
+    grid-template-columns: repeat (4, 1fr);
+    grid-template-areas:"buttonAC buttonDelOne buttonPercent buttonDiv"
+                        "button7 button8 button9 buttonMult"
+                        "button4 button5 button6 buttonMin"
+                        "button1 button2 button3 buttonPlus"
+                        "buttonSwitch button0 buttonDec buttonEq";
     grid-gap: 5px;
 }
 
-.button-1 {
+.calculator-button {
   background-color: #d8e5f8;
   border-radius: 8px;
   border-style: none;
@@ -51,10 +72,10 @@ body {
   cursor: pointer;
   display: inline-block;
   font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 30px;
   font-weight: 500;
-  width: fit-content;
-  height: 40px;
+  width: 100px;
+  height: 100px;
   line-height: 20px;
   list-style: none;
   margin-left: auto;
@@ -71,7 +92,6 @@ body {
   touch-action: manipulation;
 }
 
-.button-1:hover,
-.button-1:focus {
+.calculator-button:hover {
   background-color: #6c8ca6;
 }
