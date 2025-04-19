@@ -35,3 +35,38 @@ function operate (firstNumber, secondNumber) {
     console.log(result)
 }
  
+const calcDisplay = document.getElementById("display");
+const calcButtons = document.querySelector(".calculator-button-container");
+let displayArray = [];
+
+[...document.getElementsByClassName("calculator-button")].forEach(function(item) {
+    // adding eventListener to the elements
+    item.addEventListener('click', function() {
+      displayArray.push(item.textContent)
+    })
+})
+
+/* var obj = {
+    1: function() {
+      console.log('1')
+    },
+    2: function() {
+      console.log('2')
+    },
+    3: function() {
+      console.log('3')
+    },
+    4: function() {
+      console.log('4')
+    },
+    5: function() {
+      console.log('5')
+    },
+    6: function() {
+      console.log('6')
+    }
+  } */
+
+calcButtons.addEventListener("click", function(e) {
+    calcDisplay.value = displayArray.join('');
+})
