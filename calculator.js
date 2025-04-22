@@ -19,6 +19,34 @@ function divide (firstNumber, secondNumber) {
     return result = firstNumber / secondNumber
 }
 
+let setOperator = {
+    add: function() {
+      operator = "add"
+    },
+    subtract: function() {
+      operator = "subtract"
+    },
+    multiply: function() {
+      operator = "multiply"
+    },
+    divide: function() {
+      operator = "divide"
+  }
+};
+
+// using spread syntax to convert collection to array
+// forEach is an array method
+[...document.getElementsByClassName("")].forEach(function(item) {
+  // adding eventListener to the elements
+  item.addEventListener('click', function() {
+    // calling the methods
+    // this.id will be the id of the clicked button
+    // there is a method in the object by same name, which will be trigger
+    obj[this.id]();
+
+  })
+})
+
 function operate (firstNumber, secondNumber) {
     if (operator === "add") {
         add(firstNumber, secondNumber)

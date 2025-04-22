@@ -63,7 +63,7 @@ body {
     grid-gap: 5px;
 }
 
-.calculator-button {
+.calculator-button, .operator-button, .other-button {
   background-color: #d8e5f8;
   border-radius: 8px;
   border-style: none;
@@ -92,39 +92,6 @@ body {
   touch-action: manipulation;
 }
 
-.calculator-button:hover {
-  background-color: #6c8ca6;
-}
-
-.operator-button {
-  background-color: #d8e5f8;
-  border-radius: 8px;
-  border-style: none;
-  box-sizing: border-box;
-  color: #1a2731;
-  cursor: pointer;
-  display: inline-block;
-  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 30px;
-  font-weight: 500;
-  width: 100px;
-  height: 100px;
-  line-height: 20px;
-  list-style: none;
-  margin-left: auto;
-  margin-right: auto;
-  outline: none;
-  padding: 10px 16px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  transition: color 100ms;
-  vertical-align: baseline;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-.operator-button:hover {
+.calculator-button:hover, .operator-button:hover, .other-button:hover {
   background-color: #6c8ca6;
 }
