@@ -42,8 +42,7 @@ let setOperator = {
     // calling the methods
     // this.id will be the id of the clicked button
     // there is a method in the object by same name, which will be trigger
-    obj[this.id]();
-
+    setOperator[this.id]();
   })
 })
 
