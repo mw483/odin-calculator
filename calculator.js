@@ -70,3 +70,18 @@ let displayArray = [];
 calcButtons.addEventListener("click", function(e) {
     calcDisplay.value = displayArray.join('');
 })
+
+const clearButton = document.getElementById("bAC");
+clearButton.addEventListener("click", function(e) {
+  displayArray.length = 0;
+  calcDisplay.value = displayArray.join('');
+})
+
+const deleteButton = document.getElementById("bDelOne");
+deleteButton.addEventListener("click", function(e) {
+  if (displayArray.length > 0) {
+    displayArray.pop();
+  }
+  calcDisplay.value = displayArray.join('');
+})
+
