@@ -73,7 +73,7 @@ let arraySecond = [];
     // calling the methods
     // this.id will be the id of the clicked button
     // there is a method in the object by same name, which will be trigger
-    if (displayArray.length !== 0) {
+    if (displayArray.length !== 0 && arrayOperator.length === 0) {
       setOperator[this.id]();
       displayArray.push(item.textContent);
     }
