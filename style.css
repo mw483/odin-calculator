@@ -63,7 +63,7 @@ body {
     grid-gap: 5px;
 }
 
-.calculator-button, .operator-button, .other-button {
+.calculator-button, .operator-button, .equal-button, .other-button {
   background-color: #d8e5f8;
   border-radius: 8px;
   border-style: none;
@@ -92,6 +92,6 @@ body {
   touch-action: manipulation;
 }
 
-.calculator-button:hover, .operator-button:hover, .other-button:hover {
+.calculator-button:hover, .operator-button:hover,  .equal-button:hover, .other-button:hover {
   background-color: #6c8ca6;
 }

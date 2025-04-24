@@ -20,31 +20,19 @@ function divide (firstNumber, secondNumber) {
 }
 
 let setOperator = {
-    add: function() {
+    bAdd: function() {
       operator = "add"
     },
-    subtract: function() {
+    bMin: function() {
       operator = "subtract"
     },
-    multiply: function() {
+    bMult: function() {
       operator = "multiply"
     },
-    divide: function() {
+    bDiv: function() {
       operator = "divide"
   }
 };
-
-// using spread syntax to convert collection to array
-// forEach is an array method
-[...document.getElementsByClassName("")].forEach(function(item) {
-  // adding eventListener to the elements
-  item.addEventListener('click', function() {
-    // calling the methods
-    // this.id will be the id of the clicked button
-    // there is a method in the object by same name, which will be trigger
-    setOperator[this.id]();
-  })
-})
 
 function operate (firstNumber, secondNumber) {
     if (operator === "add") {
@@ -65,37 +53,40 @@ function operate (firstNumber, secondNumber) {
 const calcDisplay = document.getElementById("display");
 const calcButtons = document.querySelector(".calculator-button-container");
 let displayArray = [];
+let displayArrayOperator = [];
+let displayArraySecond = [];
 
 [...document.getElementsByClassName("calculator-button")].forEach(function(item) {
     // adding eventListener to the elements
     item.addEventListener('click', function() {
       displayArray.push(item.textContent)
     })
-})
+});
 
-/* var obj = {
-    1: function() {
-      console.log('1')
-    },
-    2: function() {
-      console.log('2')
-    },
-    3: function() {
-      console.log('3')
-    },
-    4: function() {
-      console.log('4')
-    },
-    5: function() {
-      console.log('5')
-    },
-    6: function() {
-      console.log('6')
+// using spread syntax to convert collection to array
+// forEach is an array method
+[...document.getElementsByClassName("operator-button")].forEach(function(item) {
+  // adding eventListener to the elements
+  item.addEventListener('click', function() {
+    // calling the methods
+    // this.id will be the id of the clicked button
+    // there is a method in the object by same name, which will be trigger
+    if (displayArray.length !== 0) {
+      setOperator[this.id]();
+      firstNumber = Number(displayArray.join(''));
+      displayArray.push(item.textContent);
     }
-  } */
+  })
+})
 
 calcButtons.addEventListener("click", function(e) {
     calcDisplay.value = displayArray.join('');
+    for (let i = 0; i < displayArray.length; i++) {
+      if (displayArray[i] === '+' || displayArray[i] === '-' || displayArray[i] === '×' || displayArray[i] === '÷') {
+        displayArrayOperator = displayArray.slice(i,i+1);
+        displayArraySecond = displayArray.slice(i+1);
+      }
+    }
 })
 
 const clearButton = document.getElementById("bAC");
@@ -111,4 +102,3 @@ deleteButton.addEventListener("click", function(e) {
   }
   calcDisplay.value = displayArray.join('');
 })
-
