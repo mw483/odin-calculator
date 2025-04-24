@@ -47,14 +47,16 @@ function operate (firstNumber, secondNumber) {
     else if (operator === "divide") {
         divide(firstNumber, secondNumber)
     }
-    console.log(result)
+    return result
 }
  
 const calcDisplay = document.getElementById("display");
 const calcButtons = document.querySelector(".calculator-button-container");
+
 let displayArray = [];
-let displayArrayOperator = [];
-let displayArraySecond = [];
+let arrayFirst = [];
+let arrayOperator = [];
+let arraySecond = [];
 
 [...document.getElementsByClassName("calculator-button")].forEach(function(item) {
     // adding eventListener to the elements
@@ -73,18 +75,20 @@ let displayArraySecond = [];
     // there is a method in the object by same name, which will be trigger
     if (displayArray.length !== 0) {
       setOperator[this.id]();
-      firstNumber = Number(displayArray.join(''));
       displayArray.push(item.textContent);
     }
   })
-})
+});
 
 calcButtons.addEventListener("click", function(e) {
     calcDisplay.value = displayArray.join('');
     for (let i = 0; i < displayArray.length; i++) {
       if (displayArray[i] === '+' || displayArray[i] === '-' || displayArray[i] === '×' || displayArray[i] === '÷') {
-        displayArrayOperator = displayArray.slice(i,i+1);
-        displayArraySecond = displayArray.slice(i+1);
+        arrayFirst = displayArray.slice(0, i);
+        firstNumber = Number(arrayFirst.join(''));
+        arrayOperator = displayArray.slice(i,i+1);
+        arraySecond = displayArray.slice(i+1).filter(item => item !== '=');
+        secondNumber = Number(arraySecond.join(''));
       }
     }
 })
@@ -102,3 +106,12 @@ deleteButton.addEventListener("click", function(e) {
   }
   calcDisplay.value = displayArray.join('');
 })
+
+const equalButton = document.getElementById("bEq");
+equalButton.addEventListener('click', function(e) {
+    if (displayArray.length !== 0 && arrayOperator !== 0 && arraySecond !== 0) {
+      displayArray.push(equalButton.textContent);
+      operate(firstNumber,secondNumber);
+      displayArray.push(result);
+    }
+  })
