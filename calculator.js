@@ -16,11 +16,11 @@ function multiply (firstNumber, secondNumber) {
 }
 
 function divide (firstNumber, secondNumber) {
-    return result = firstNumber / secondNumber
+      return result = firstNumber / secondNumber
 }
 
 let setOperator = {
-    bAdd: function() {
+    bPlus: function() {
       operator = "add"
     },
     bMin: function() {
@@ -35,21 +35,33 @@ let setOperator = {
 };
 
 function operate (firstNumber, secondNumber) {
-    if (operator === "add") {
+    if (secondNumber === 0) {
+      return result = "ERROR";
+    }
+    else {
+      if (operator === "add") {
         add(firstNumber, secondNumber)
-    }
-    else if (operator === "subtract") {
+      }
+      else if (operator === "subtract") {
         subtract(firstNumber, secondNumber)
-    }
-    else if (operator === "multiply") {
+      }
+      else if (operator === "multiply") {
         multiply(firstNumber, secondNumber)
-    }
-    else if (operator === "divide") {
+      }
+      else if (operator === "divide") {
         divide(firstNumber, secondNumber)
+      }
+      return result.toFixed(3)
     }
-    return result
 }
- 
+
+function clearArrays () {
+  arrayFirst.length = 0;
+  arrayOperator.length = 0;
+  arraySecond.length = 0;
+  arrayResult.length = 0;
+}
+
 const calcDisplay = document.getElementById("display");
 const calcButtons = document.querySelector(".calculator-button-container");
 
@@ -57,6 +69,7 @@ let displayArray = [];
 let arrayFirst = [];
 let arrayOperator = [];
 let arraySecond = [];
+let arrayResult = [];
 
 [...document.getElementsByClassName("calculator-button")].forEach(function(item) {
     // adding eventListener to the elements
@@ -73,9 +86,20 @@ let arraySecond = [];
     // calling the methods
     // this.id will be the id of the clicked button
     // there is a method in the object by same name, which will be trigger
-    if (displayArray.length !== 0 && arrayOperator.length === 0) {
+    if (displayArray.length !== 0 && arrayOperator.length == 0 && result === undefined) {
       setOperator[this.id]();
       displayArray.push(item.textContent);
+    }
+    else if (displayArray.length !== 0 && result !== undefined && result !== "ERROR") {
+      displayArray.length = 0;
+      setOperator[this.id]();
+      firstNumber = result;
+      for (i in arrayResult) {
+        displayArray.push(arrayResult[i]);
+      }
+      displayArray.push(item.textContent);
+      result = undefined;
+      arrayResult.length = 0;
     }
   })
 });
@@ -96,22 +120,27 @@ calcButtons.addEventListener("click", function(e) {
 const clearButton = document.getElementById("bAC");
 clearButton.addEventListener("click", function(e) {
   displayArray.length = 0;
+  clearArrays();
+  result = undefined;
   calcDisplay.value = displayArray.join('');
 })
 
 const deleteButton = document.getElementById("bDelOne");
 deleteButton.addEventListener("click", function(e) {
-  if (displayArray.length > 0) {
+  if (displayArray.length > 0 && result === undefined) {
     displayArray.pop();
   }
+  clearArrays();
   calcDisplay.value = displayArray.join('');
 })
 
 const equalButton = document.getElementById("bEq");
 equalButton.addEventListener('click', function(e) {
     if (displayArray.length !== 0 && arrayOperator !== 0 && arraySecond !== 0) {
+      clearArrays();
       displayArray.push(equalButton.textContent);
       operate(firstNumber,secondNumber);
       displayArray.push(result);
+      arrayResult = (""+result).split("");    
     }
-  })
+  }) 
