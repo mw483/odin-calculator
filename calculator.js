@@ -35,24 +35,24 @@ let setOperator = {
 };
 
 function operate (firstNumber, secondNumber) {
-    if (secondNumber === 0) {
-      return result = "ERROR";
+  if (operator === "divide" && secondNumber === 0) {
+    return result = "ERROR";
+  }
+  else {
+    if (operator === "add") {
+      add(firstNumber, secondNumber)
     }
-    else {
-      if (operator === "add") {
-        add(firstNumber, secondNumber)
-      }
-      else if (operator === "subtract") {
-        subtract(firstNumber, secondNumber)
-      }
-      else if (operator === "multiply") {
-        multiply(firstNumber, secondNumber)
-      }
-      else if (operator === "divide") {
-        divide(firstNumber, secondNumber)
-      }
-      return result.toFixed(3)
+    else if (operator === "subtract") {
+      subtract(firstNumber, secondNumber)
     }
+    else if (operator === "multiply") {
+      multiply(firstNumber, secondNumber)
+    }
+    else if (operator === "divide") {
+      divide(firstNumber, secondNumber)
+    }
+    return result.toFixed(3)
+  }
 }
 
 function clearArrays () {
@@ -136,7 +136,7 @@ deleteButton.addEventListener("click", function(e) {
 
 const equalButton = document.getElementById("bEq");
 equalButton.addEventListener('click', function(e) {
-    if (displayArray.length !== 0 && arrayOperator !== 0 && arraySecond !== 0) {
+    if (displayArray.length !== 0 && arrayOperator !== 0 && arraySecond !== 0 && result !== "ERROR") {
       clearArrays();
       displayArray.push(equalButton.textContent);
       operate(firstNumber,secondNumber);
